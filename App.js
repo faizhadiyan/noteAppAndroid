@@ -24,7 +24,7 @@ const CurrentPageWidget = ({ currentPage, noteList, setCurrentPage, addNote }) =
       // Berikan function "addNote" ke component "AddNote"
       return <AddNote setCurrentPage={setCurrentPage} addNote={addNote} />;
     case 'edit':
-      return <EditNote />;
+      return <EditNote setCurrentPage={setCurrentPage} />;
     default:
       return <Home />;
   }
@@ -53,15 +53,7 @@ const App = () => {
     ]);
   };
 
-  return (
-    <CurrentPageWidget
-      currentPage={currentPage}
-      noteList={noteList}
-      setCurrentPage={setCurrentPage}
-      // Berikan function addNote sebagai prop
-      addNote={addNote}
-    />
-  );
+  return <CurrentPageWidget currentPage={currentPage} noteList={noteList} setCurrentPage={setCurrentPage} addNote={addNote} />;
 };
 
 export default App;
