@@ -3,12 +3,18 @@ import { View, StyleSheet, Text } from 'react-native';
 import CustomButton from '../components/customButton';
 import CustomTextInput from '../components/customTextInput';
 
-const EditNote = ({ setCurrentPage }) => {
+const EditNote = ({ setCurrentPage, noteList, noteId }) => {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
 
+  const note = noteList.find((note) => note.id === noteId);
+
+  if (!note) {
+    return <Text>Note not found.</Text>;
+  }
   return (
     <View style={styles.container}>
+      <Text style={styles.noteId}>Note ID: {noteId}</Text>
       <Text style={styles.pageTitle}>Ubah Note</Text>
       <CustomTextInput text={title} onChange={setTitle} label="Judul" placeholder="Judul" numberOfLines={1} multiline={false} />
       <CustomTextInput text={desc} onChange={setDesc} label="Deskripsi" placeholder="Deskripsi" multiline numberOfLines={4} />
@@ -44,6 +50,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     padding: 20,
+  },
+  noteId: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 10,
   },
   pageTitle: {
     marginTop: 20,

@@ -16,7 +16,7 @@ const addNote = (title, desc) => {
   ]);
 };
 
-const CurrentPageWidget = ({ currentPage, noteList, setCurrentPage, addNote }) => {
+const CurrentPageWidget = ({ currentPage, noteList, setCurrentPage, addNote, noteId }) => {
   switch (currentPage) {
     case 'home':
       return <Home noteList={noteList} setCurrentPage={setCurrentPage} />;
@@ -24,7 +24,7 @@ const CurrentPageWidget = ({ currentPage, noteList, setCurrentPage, addNote }) =
       // Berikan function "addNote" ke component "AddNote"
       return <AddNote setCurrentPage={setCurrentPage} addNote={addNote} />;
     case 'edit':
-      return <EditNote setCurrentPage={setCurrentPage} />;
+      return <EditNote setCurrentPage={setCurrentPage} noteList={noteList} noteId={noteId} />;
     default:
       return <Home />;
   }

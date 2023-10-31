@@ -15,7 +15,7 @@ const NoteCard = ({ item, setCurrentPage }) => (
         width={100}
         // Tuliskan layar "edit" untuk ketika tombol-nya ditekan
         onPress={() => {
-          setCurrentPage('edit');
+          setCurrentPage('edit', note.id);
         }}
       />
       <CustomButton backgroundColor="#D82148" color="#fff" text="Hapus" fontSize={12} width={100} onPress={() => {}} />
